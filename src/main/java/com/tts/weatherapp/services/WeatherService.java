@@ -60,12 +60,10 @@ public class WeatherService {
 		int counter = 10;
 		LinkedList<String> recents = new LinkedList<>(); 
 		for (Zipcode zipcode: repository.findAll()) {
-			if (counter == 0) {
-				break;
+			if(recents.size() == counter) {
+				recents.removeLast();
 			}
 			recents.addFirst(zipcode.getZipcode());
-			counter-=1;
-			
 		}
 		return recents;
 	}
